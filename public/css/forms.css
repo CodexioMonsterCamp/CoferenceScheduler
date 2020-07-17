@@ -44,9 +44,11 @@
   background: url("https://picsum.photos/600/400?image=1083") center no-repeat;
 }
 .conference-image {
-  width: 450px;
-  height:300px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 1.5em;
 }
+
 .textt {
   font-family: "Ubuntu", sans-serif;
   color: #f2f2f2;
@@ -697,7 +699,7 @@ a.active {
     display: flow-root;
     padding: 40px;
   }
- 
+
   .main {
     max-width: min-content;
   }
