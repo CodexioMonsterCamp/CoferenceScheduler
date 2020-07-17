@@ -9,7 +9,6 @@ const flash = require("connect-flash");
 const helmet = require("helmet");
 const compression = require("compression");
 
-
 const app = express();
 const store = new MondoDBSession({ uri: MONDODB_URI, collection: "loginsessions" })
 const User = require("./models/user");
