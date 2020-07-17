@@ -15,9 +15,7 @@
 
   <div class="main2 marginn ">
     <article class="active">
-      <div class="circular--landscape">
-        <img src="<%=conference.conferenceImg>" class="img" alt="Conference Photo">
-      </div>
+      <img src="<%=conference.conferenceImg%>" class="img" alt="Conference Photo">
       <div class="text">
         <p class="sign conference-header" align="center"><%=conference.name%></p>
         <p><b>Description: </b><%=conference.description%></p>
@@ -35,99 +33,72 @@
 
 
   <div class=sign1>
-    <label class=" sign head headings">Add sessions</label>
-      </div>
+    <label class="sign head headings">Add sessions</label>
+  </div>
 
 
-      <div class="main" style="margin-top: 0px;">
-        <form class=" product-form form1" action="/add-session" method="POST">
+  <div class="main" style="margin-top: 0px;">
+    <form class=" product-form form1" action="/add-session" method="POST">
 
-          <p class="sign2">Address</p>
-          <p class="sign1" style="color:black;"><%= conference.address.adress %></p>
-          <input class="name" type="hidden" name="venueId" value="<%= conference.address._id %>">
-          <input class="name" type="hidden" name="conferenceId" value="<%= conference._id %>">
+      <p class="sign2">Address</p>
+      <p class="sign1" style="color:black;"><%= conference.address.adress %></p>
+      <input class="name" type="hidden" name="venueId" value="<%= conference.address._id %>">
+      <input class="name" type="hidden" name="conferenceId" value="<%= conference._id %>">
 
-          <p class="sign2">Choose hall</p>
+      <p class="sign2">Choose hall</p>
 
-          <select class="role name form-control" name="hallId" id="hall">
-            <% for (let hall of halls) { %>
-            <% if(hall.venueId.toString() === conference.address._id.toString()) { %>
-            <option value="<%=hall._id%>"><%= hall.name %> - Seats capacity: <%= hall.seats %> </option>
-            <% } %>
-            <% } %>
-          </select>
-          <p class="sign2">Choose speaker</p>
-
-          <select class="role name form-control" name="speakerId" id="speaker">
-            <% for (let speaker of speakers) { %>
-            <% if(speaker.conferenceId.toString() === conference._id.toString()) { %>
-            <option value="<%=speaker._id%>"><%= speaker.speakerName %></option>
-            <% } %>
-            <% } %>
-          </select>
-          <label class="sign2" align="center" for="startTime">Choose start end date and time</label>
-          <input class="name" type="datetime-local" name="startTime" id="startTime">
-          <label class="sign2" align="center" for="endTime">Choose start end date and time</label>
-          <input class="name" type="datetime-local" name="endTime" id="endTime">
-          <button class="submit button btn-block" type="submit">Add Session</button>
-        </form>
-      </div>
-
-      <div class=sign1>
-        <label class="sign head headings">Sessions</label>
-      </div>
-
-      <div class="buttons-data-filter2" id="myBtnContainer">
-
-        <button class="submit1 button btn-session allSessionsDisplayBtn active" onclick="allBttns()"
-          type="button">ALL</button>
-
-        <button class="submit1 button btn-session upcommingSessionsDisplayBtn" onclick="upcommingBttns()"
-          type="button">UPCOMING</button>
-
-        <!-- <div class="buttons-data-filter2 ">
-      <button class="sibmit button btn-session allSessionsDisplayBtn active" type="button">ALL</button>
-      <button class="submit button btn-session pastSessionsDisplayBtn" type="button">PAST</button>
-      <button class="submit button btn-session activeSessionsDisplayBtn" type="button">ACTIVE</button>
-      <button class="submit button btn-session upcommingSessionsDisplayBtn" type="button">UPCOMING</button>
-    </div> -->
-
-
-
-
-
-
-      </div>
-
-
-      <div class="grid4">
-        <% for(let session of allSessions) { %>
-        <div class="main4  allSessions allSessionsDisplay" id="allSessionsDisplay">
-          <article class="sessions">
-            <div class="circular--landscape">
-              <img src="<%=session.speakerId.speakerImg%>" class="img" alt="Speaker Photo">
-            </div>
-            <p class="sign2"><b class="sign2">Speaker name: </b><%=session.speakerId.speakerName%></p>
-            <p class="sign2"><b class="sign2">Speaker description: </b><%=session.speakerId.speakerDescription%></p>
-            <h3><b class="sign2">Hall: </b><%=session.hallId.name%></h3>
-            <h3><b class="sign2">Seats available: </b><%=session.sessionSeats%></h3>
-            <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime.toString().substring(0, 21)%>
-            </p>
-            <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime.toString().substring(0, 21)%></p>
-            <form class="product-form form1" action="/join-session" method="POST">
-              <input type="hidden" value="<%= session._id %>" name="sessionId" />
-              <input type="hidden" value="<%= conference._id %>" name="conferenceId" />
-              <button class="submit button btn-block" type="submit">Join session</button>
-            </form>
-          </article>
-        </div>
+      <select class="role name form-control" name="hallId" id="hall">
+        <% for (let hall of halls) { %>
+        <% if(hall.venueId.toString() === conference.address._id.toString()) { %>
+        <option value="<%=hall._id%>"><%= hall.name %> - Seats capacity: <%= hall.seats %> </option>
         <% } %>
+        <% } %>
+      </select>
+      <p class="sign2">Choose speaker</p>
 
-        <!-- <% for(let session of pastSessions) { %>
-    <div class="main  allSessions collapsepast pastSessionsDisplay" id="pastSessionsDisplay">
-      <article class=" sessions">
-        <p><b class="sign2">Hall: </b><%=session.hallId.name%></p>
-        <p><b class="sign2">Seats available: </b><%=session.sessionSeats%></p>
+      <select class="role name form-control" name="speakerId" id="speaker">
+        <% for (let speaker of speakers) { %>
+        <% if(speaker.conferenceId.toString() === conference._id.toString()) { %>
+        <option value="<%=speaker._id%>"><%= speaker.speakerName %></option>
+        <% } %>
+        <% } %>
+      </select>
+      <label class="sign2" align="center" for="startTime">Choose start end date and time</label>
+      <input class="name" type="datetime-local" name="startTime" id="startTime">
+      <label class="sign2" align="center" for="endTime">Choose start end date and time</label>
+      <input class="name" type="datetime-local" name="endTime" id="endTime">
+      <button class="submit button btn-block" type="submit">Add Session</button>
+    </form>
+  </div>
+
+  <div class=sign1>
+    <label class="sign head headings">Sessions</label>
+  </div>
+
+  <div class="buttons-data-filter2" id="myBtnContainer">
+
+    <button class="submit1 button btn-session allSessionsDisplayBtn active" onclick="allBttns()"
+      type="button">ALL</button>
+
+    <button class="submit1 button btn-session upcommingSessionsDisplayBtn" onclick="upcommingBttns()"
+      type="button">UPCOMING</button>
+
+
+
+  </div>
+
+
+  <div class="grid4">
+    <% for(let session of allSessions) { %>
+    <div class="main4  allSessions allSessionsDisplay" id="allSessionsDisplay">
+      <article class="sessions">
+        <div class="circular--landscape">
+          <img src="<%=session.speakerId.speakerImg%>" class="img" alt="Speaker Photo">
+        </div>
+        <p><b class="sign2">Speaker name: </b><%=session.speakerId.speakerName%></p>
+        <p><b class="sign2">Speaker description: </b><%=session.speakerId.speakerDescription%></p>
+        <h3><b class="sign2">Hall: </b><%=session.hallId.name%></h3>
+        <h3><b class="sign2">Seats available: </b><%=session.sessionSeats%></h3>
         <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime.toString().substring(0, 21)%></p>
         <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime.toString().substring(0, 21)%></p>
         <form class="product-form form1" action="/join-session" method="POST">
@@ -138,14 +109,14 @@
       </article>
     </div>
     <% } %>
-
-    <% for(let session of activeSessions) { %>
-    <div class="main  allSessions collapseactive activeSessionsDisplay" id="activeSessionsDisplay">
-      <article class=" sessions">
+    <!-- 
+    <% for(let session of upcommingSessions) { %>
+    <div class="main4  allSessions upcommingSessionsDisplay">
+      <article class="sessions">
         <p><b class="sign2">Hall: </b><%=session.hallId.name%></p>
         <p><b class="sign2">Seats available: </b><%=session.sessionSeats%></p>
-        <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime.toString().substring(0, 21)%></p>
-        <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime.toString().substring(0, 21)%></p>
+        <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime%></p>
+        <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime%></p>
         <form class="product-form form1" action="/join-session" method="POST">
           <input type="hidden" value="<%= session._id %>" name="sessionId" />
           <input type="hidden" value="<%= conference._id %>" name="conferenceId" />
@@ -153,128 +124,51 @@
         </form>
       </article>
     </div>
-    <% } %>
--->
-        <% for(let session of upcommingSessions) { %>
-        <div class="main4  allSessions upcommingSessionsDisplay">
-          <article class="sessions">
-            <p><b class="sign2">Hall: </b><%=session.hallId.name%></p>
-            <p><b class="sign2">Seats available: </b><%=session.sessionSeats%></p>
-            <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime%></p>
-            <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime%></p>
-            <form class="product-form form1" action="/join-session" method="POST">
-              <input type="hidden" value="<%= session._id %>" name="sessionId" />
-              <input type="hidden" value="<%= conference._id %>" name="conferenceId" />
-              <button class="submit button btn-block" type="submit">Join session</button>
-            </form>
-          </article>
-        </div>
-        <% } %>
+    <% } %> -->
 
-      </div>
+  </div>
 
-      <form class="product-form form2" action="/maximum-programme" method="POST">
+  <form class="product-form form2" action="/maximum-programme" method="POST">
 
-        <input type="hidden" value="<%=conference._id%>" name="conferenceId" />
-        <button align="center" class="submit1 button" type="submit">Maximum Programme</button>
+    <input type="hidden" value="<%=conference._id%>" name="conferenceId" />
+    <button align="center" class="submit1 button" type="submit">Maximum Programme</button>
 
-      </form>
+  </form>
 
 
 
-      <script>
-        const allBtn = document.querySelector('.allSessionsDisplayBtn');
-        const upcommingBtn = document.querySelector('.upcommingSessionsDisplayBtn');
+  <script>
+    const allBtn = document.querySelector('.allSessionsDisplayBtn');
+    const upcommingBtn = document.querySelector('.upcommingSessionsDisplayBtn');
 
-        const allSess = document.querySelector('.allSessionsDisplay');
-        const upcommingSess = document.querySelector('.upcommingSessionsDisplay');
+    const allSess = document.querySelector('.allSessionsDisplay');
+    const upcommingSess = document.querySelector('.upcommingSessionsDisplay');
 
-        function allBttns() {
-          console.log(allSess.className);
-          for (let i = 0; i < allSess.lenght; i++) {
-            allSess[i].className += " collapse";
-            upcommingSess[i].className += " collapse";
-          }
+    function allBttns() {
+      console.log(allSess.className);
+      for (let i = 0; i < allSess.lenght; i++) {
+        allSess[i].className += " collapse";
+        upcommingSess[i].className += " collapse";
+      }
 
-        }
+    }
 
-        function upcommingBttns() {
-          allSess.classList.toggle(' collapse');
-          upcommingSess.classList.toggle(' collapse');
-        }
+    function upcommingBttns() {
+      allSess.classList.toggle(' collapse');
+      upcommingSess.classList.toggle(' collapse');
+    }
 
-
-    // allBtn.addEventListener('click', function allFunctF() {
-    //   if (allSess.style.display = "none !important") {
-    //     allSess.style.display = "grid !important";
-    //     pastSess.style.display = "none !important";
-    //     // activeSess.style.display = "none";
-    //     upcommingSess.style.display = "none !important";
-    //   } else {
-    //     pastSess.style.display = "none !important";
-    //     // activeSess.style.display = "none";
-    //     upcommingSess.style.display = "none !important";
-    //   }
-    // })
+  </script>
 
 
-    // pastBtn.addEventListener('click', function pastFunctF() {
-    //   if (pastSess.style.display = "none") {
-    //     pastSess.style.display = "grid !important";
-    //     allSess.style.display = "none !important";
-    //     // activeSess.style.display = "none";
-    //     upcommingSess.style.display = "none !important";
-    //   } else {
-    //     allSess.style.display = "none !important";
-    //     // activeSess.style.display = "none";
-    //     upcommingSess.style.display = "none !important";
-    //   }
-    // })
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-
-
-    // activeBtn.addEventListener('click', function activeFunctF() {
-    //   if (activeSess.style.display = "none") {
-    //     activeSess.style.display = "grid";
-    //     allSess.style.display = "none";
-    //     pastSess.style.display = "none";
-    //     upcommingSess.style.display = "none";
-    //   } else {
-    //     allSess.style.display = "none";
-    //     pastSess.style.display = "none";
-    //     upcommingSess.style.display = "none";
-    //   }
-    // })
-
-
-
-    // upcommingBtn.addEventListener('click', function upcommingFunctF() {
-    //   if (upcommingSess.style.display = "none") {
-    //     upcommingSess.style.display = "grid";
-    //     allSess.style.display = "none";
-    //     pastSess.style.display = "none";
-    //     activeSess.style.display = "none";
-    //   } else {
-    //     allSess.style.display = "none";
-    //     pastSess.style.display = "none";
-    //     activeSess.style.display = "none";
-    //   }
-    // })
-
-
-
-
-      </script>
-
-
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-      <%- include('includes/end.ejs') %>
+  <%- include('includes/end.ejs') %>

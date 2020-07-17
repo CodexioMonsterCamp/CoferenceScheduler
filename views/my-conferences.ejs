@@ -1,9 +1,18 @@
 <%- include('includes/head.ejs') %>
 
-
+<style>
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      width: -webkit-fill-available;
+    }
+    </style>
 </head>
 
 <body class="body">
+
 
     <%- include('includes/navigation.ejs') %>
     <% if(errorMessage) { %>
@@ -35,19 +44,19 @@
         <% for (let conference of conferences) { %>
         <% if (userRole === "conferenceOwner") { %>
 
-        <div class="main1">
+        <div class="mainGrid">
             <article class="active">
-                <img src="<%=conference.conferenceImg>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p  class=" p" maxlength="20"><b>Description: </b><%=conference.description%></p>
-                <p><b>Address: </b><%=conference.address.adress%></p>
-                <a href="/allconferences/<%= conference._id %>" name="conferenceId"
-                    class="submit button btn-block">Details</a>
-        </div>
-        </article>
+                    <p maxlength="20"><b>Description: </b><%=conference.description%></p>
+                    <p><b>Address: </b><%=conference.address.adress%></p>
+                    <a href="/allconferences/<%= conference._id %>" name="conferenceId"
+                        class="submit button btn-block">Details</a>
+                </div>
+            </article>
         </div>
         <% } %>
 
@@ -59,14 +68,14 @@
 
 
         <% for (let session of attendingSessions) { %>
-        <div class="main1">
+        <div class="mainGrid">
             <article class="active">
-                <img src="https://picsum.photos/600/400?image=1083" class="img" alt="Sample photo">
+                <img class="conference-image" src="https://picsum.photos/600/400?image=1083" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header"><%=session.conferenceId.name%></p>
                     <p><b>Start time: </b><%=session.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=session.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlength="20"><b>Description: </b><%=session.conferenceId.description%></p>
+                    <p maxlength="20"><b>Description: </b><%=session.conferenceId.description%></p>
                     <p><b>Address: </b><%=session.hallId.name%></p>
                     <p><b>Speaker: </b><%=session.conferenceId.speakerName%></p>
                 </div>

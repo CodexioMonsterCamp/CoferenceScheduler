@@ -25,7 +25,7 @@
                     <p class="signature1" align="center">End time</p>
                     <input class="name" type="datetime-local" name="endTime" id="endTime">
                     <p class="signature1" align="center">Address</p>
-                    <select class="name" name="address" id="venue">
+                    <select class="name select-css" name="address" id="venue">
                         <% for (let venue of venues) { %>
                         <option value="<%=venue._id%>"><%= venue.adress %></option>
                         <% } %>

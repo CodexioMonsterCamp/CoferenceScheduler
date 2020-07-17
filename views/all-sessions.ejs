@@ -1,4 +1,13 @@
 <%- include('includes/head.ejs') %>
+<style>
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+      width: -webkit-fill-available;
+    }
+    </style>
 </head>
 
 <body class="body">
@@ -19,14 +28,14 @@
     <div class="grid">
         <% for (let conference of conferences) { %>
         <% if(conference.startTime<currentDate){ %>
-        <div class="main1">
+        <div class="mainGrid">
             <article class="active">
-                <img src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.conferenceId.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
                 </div>
             </article>
         </div>
@@ -40,14 +49,14 @@
         <% for (let conference of conferences) { %>
         <% if(conference.startTime < currentDate && conference.endTime > currentDate){ %>
 
-        <div class="main1">
+        <div class="mainGrid">
             <article class="active">
-                <img src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.conferenceId.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
                 </div>
             </article>
         </div>
@@ -65,14 +74,14 @@
         <% for (let conference of conferences) { %>
         <% if(conference.startTime > currentDate){ %>
 
-        <div class="main1">
+        <div class="mainGrid">
             <article class="active">
-                <img src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceId.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.conferenceId.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
                     <form class="product-form form1" action="/join-session" method="POST">
                         <input type="hidden" value="<%= conference._id %>" name="sessionId" />
                         <input type="hidden" value="<%= conference.conferenceId._id %>" name="conferenceId" />

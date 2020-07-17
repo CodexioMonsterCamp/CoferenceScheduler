@@ -18,13 +18,13 @@
 
                     <p class="sign1" align="center">Choose speaker</p>
 
-                    <select class="name form-control" name="speaker" id="speaker">
+                    <select class="name form-control select-css" name="speaker" id="speaker">
 
                         <% for (let speaker of speakers) { %>
                         <option value="<%=speaker._id%>"><%= speaker.name %></option>
                         <% } %>
                     </select>
-                    <select class="name form-control" name="hall" id="hall">
+                    <select class="name form-control select-css" name="hall" id="hall">
                         <% for (let hall of halls) { %>
                         <option value="<%=hall._id%>"><%= hall.name %> - Seats capacity: <%= hall.seats %> </option>
                         <% } %>

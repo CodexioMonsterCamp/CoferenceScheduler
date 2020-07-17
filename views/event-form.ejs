@@ -1,4 +1,23 @@
 <%- include('includes/head.ejs') %>
+<style>
+<<<<<<< HEAD
+p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: -webkit-fill-available;
+}
+=======
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        width: -webkit-fill-available;
+    }
+>>>>>>> 7308f0f830f8b6d8df3410f338ca7b051ce3f7a6
+</style>
 </head>
 
 <body class="body">
@@ -30,14 +49,14 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.endTime < currentDate) { %>
-        <div class="main5">
+        <div class="mainGrid">
             <article class="past ">
-                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.description%></p>
                     <p><b>Address: </b><%=conference.address.adress%></p>
                     <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
                         class="submit button btn-block">Details</a>
@@ -54,14 +73,14 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.startTime < currentDate && conference.endTime > currentDate) { %>
-        <div class="main5">
+        <div class="mainGrid">
             <article class="active">
-                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.description%></p>
                     <p><b>Address: </b><%=conference.address.adress%></p>
                     <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
                         class="submit button btn-block">Details</a>
@@ -79,14 +98,14 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.startTime > currentDate) { %>
-        <div class="main5">
+        <div class="mainGrid">
             <article class="future">
-                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <img class="conference-image" src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
                     <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
-                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.description%></p>
                     <p><b>Address: </b><%=conference.address.adress%></p>
                     <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
                         class="submit button btn-block">Details</a>

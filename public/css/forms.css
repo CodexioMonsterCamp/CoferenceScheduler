@@ -43,7 +43,10 @@
   height: 100%;
   background: url("https://picsum.photos/600/400?image=1083") center no-repeat;
 }
-
+.conference-image {
+  width: 450px;
+  height:300px;
+}
 .textt {
   font-family: "Ubuntu", sans-serif;
   color: #f2f2f2;
@@ -146,22 +149,6 @@ body {
   text-align: center;
 }
 
-.main5 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 18px;
-  padding-top: 18px;
-  padding-bottom: 18px;
-  background-color: #ffffff;
-  width: 350px !important;
-  height: auto !important;
-  margin: 0 auto;
-  border-radius: 1.5em;
-  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-  text-align: center;
-}
-
 .main2 {
   display: flex;
   flex-direction: column;
@@ -192,10 +179,27 @@ body {
   margin-bottom: 30px;
 }
 
+.mainGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 18px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: #ffffff;
+  width: 50vh;
+  height: auto !important;
+  margin: 0 auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
 .img {
   width: 100%;
-  height: 150px;
   border-radius: 1.5em;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .circular--landscape img {
@@ -257,14 +261,6 @@ body {
 .article {
   size: 50px;
 }
-
-/* p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
-  width: -webkit-fill-available;
-} */
 
 .head {
   font-size: 4vh;
@@ -372,7 +368,7 @@ p {
   background: rgba(136, 126, 126, 0.04);
   padding: 10px 20px;
   border: none;
-  border-radius: 1.5em !important;
+  border-radius: 20px;
   outline: none;
   box-sizing: border-box;
   border: 2px solid rgba(0, 0, 0, 0.02);
@@ -402,7 +398,7 @@ p {
   padding-top: 10px;
   font-family: "Ubuntu", sans-serif;
   margin-left: 35%;
-  font-size: 14px !important;
+  font-size: 2vh !important;
   margin: auto;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   text-align: center;
@@ -628,13 +624,6 @@ a.active {
   margin: 0 auto;
 }
 
-.p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: -webkit-fill-available;
-}
-
 @media only screen and (max-width: 1024px) {
   .buttons-data-filter2 {
     display: flow-root !important;
@@ -708,14 +697,7 @@ a.active {
     display: flow-root;
     padding: 40px;
   }
-
-  .p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: -webkit-fill-available;
-  }
-
+ 
   .main {
     max-width: min-content;
   }
@@ -883,7 +865,7 @@ a.active {
 }
 
 .form-control {
-  border-radius: 1.5em;
+  border-radius: 1.5em !important;
 }
 
 .conference-header {
@@ -892,4 +874,14 @@ a.active {
 
 .marginn {
   margin-top: 0 !important;
+}
+
+select {
+  width: 400px;
+  text-align-last: center;
+}
+
+.select-css option {
+  max-width: 300px;
+  border-radius: 1.5em;
 }
