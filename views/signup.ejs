@@ -1,0 +1,185 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+
+    <style> /*
+        body {
+            background-color: #F3EBF6;
+            font-family: 'Ubuntu', sans-serif;
+            padding: 40px 0;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 18px;
+            background-color: #FFFFFF;
+            width: 400px;
+            height: fit-content;
+            margin: 7em auto;
+            border-radius: 1.5em;
+            box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+        }
+
+        .sign {
+            padding-top: 20px;
+            padding-bottom: 30px;
+            color: #0082e6;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: bold;
+            font-size: 23px;
+        }
+
+        .un {
+            width: 76%;
+            color: rgb(38, 50, 56);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background: rgba(136, 126, 126, 0.04);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            box-sizing: border-box;
+            border: 2px solid rgba(0, 0, 0, 0.02);
+            margin-bottom: 50px;
+            margin-left: 46px;
+            text-align: center;
+            margin-bottom: 27px;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        .pass,
+        .pass1 {
+            width: 76%;
+            color: rgb(38, 50, 56);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            background: rgba(136, 126, 126, 0.04);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            box-sizing: border-box;
+            border: 2px solid rgba(0, 0, 0, 0.02);
+            margin-bottom: 50px;
+            margin-left: 46px;
+            text-align: center;
+            margin-bottom: 27px;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+
+        .un:focus,
+        .pass:focus,
+        .pass1:focus {
+            border: 2px solid rgba(0, 0, 0, 0.18) !important;
+
+        }
+
+        .submit {
+            display: flex;
+            cursor: pointer;
+            border-radius: 5em;
+            color: #fff;
+            background: #0082e6;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            font-family: 'Ubuntu', sans-serif;
+            margin-left: 35%;
+            font-size: 13px;
+            margin: auto;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+            
+        }
+
+        .submit:hover {
+            border-radius: 2px #0082e6;
+            background: transparent;
+            color: #0082e6;
+        }
+
+        .forgot {
+            text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+            color: black;
+            padding-top: 15px;
+        }
+
+        a {
+            text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+            color: black;
+            text-decoration: none
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #0082e6;
+            border: 1px solid #0082e6;
+            border-color: #0082e6;
+        }
+
+        a:link {
+            color: #0082e6;
+        }
+        .user-message {
+            margin: 20px auto;
+            width: 50%;
+            border: 1px solid green;
+            background-color: #47bb24;
+            padding: 20px;
+            border-radius: 10px;
+            text-align:center;
+            color: white;
+        }
+
+        .user-message--error {
+            margin: 20px auto;
+            width: 50%;
+            border: 1px solid red;
+            background-color: #f17272;
+            padding: 20px;
+            border-radius: 10px;
+            text-align:center;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .main {
+                border-radius: 0px;
+            }
+        }
+        */
+    </style>
+    </head>
+
+    <%- include('includes/navigation.ejs') %>
+    <% if(errorMessage) { %>
+        <div class="user-message user-message--error">
+            <%= errorMessage %>
+        </div>
+
+    <% } %>
+    <div class="main">
+        <p class="signature" align="center">Register</p>
+        <form class="form1" action="/signup" method="POST">
+            <label for="email"></label>
+            <label for="password"></label>
+            <label for="confirmPassword"></label>
+        <input class="name btn-block" name="email" type="text" align="center" placeholder="Email" >
+        <input class="name btn-block" name="password" type="password" align="center" placeholder="Password" >
+        <input class="name btn-block" name="confirmPassword" type="password" align="center" placeholder="Repeat Password" >
+        <select name="role" class="role name">
+            <option value="conferenceOwner">Conference owner</option>
+            <option value="conferenceAttendee">Conference attendee</option>
+        </select>
+        <button class="submit button" align="center">Sign Up</button>
+    </form>
+    </div>
+
+
+    <%- include('includes/end.ejs') %>

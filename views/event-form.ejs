@@ -1,0 +1,107 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body class="body">
+
+    <%- include('includes/navigation.ejs') %>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="#past" id="pastBtn">Past</a>
+        <a href="#active" id="activeBtn">Active</a>
+        <a href="#upcoming" id="upcomingBtn">Upcoming</a>
+    </div>
+
+
+
+    <p align="center" class="sign head">All Conferences</p>
+    <% if(errorMessage) { %>
+    <div class="user-message--error">
+        <%= errorMessage %>
+    </div>
+    <% } %>
+    <% if(successMessage) { %>
+    <div class="user-message">
+        <%= successMessage %>
+    </div>
+    <% } %>
+    <h3 align="center" id="past" class="sign head">Past</h3>
+    <div class="grid">
+
+        <% for (let conference of conferences) { %>
+        <%if(conference.endTime < currentDate) { %>
+        <div class="main5">
+            <article class="past ">
+                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <div class="text">
+                    <p class="sign conference-header" align="center"><%=conference.name%></p>
+                    <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p><b>Address: </b><%=conference.address.adress%></p>
+                    <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
+                        class="submit button btn-block">Details</a>
+                </div>
+            </article>
+        </div>
+        <% } %>
+        <% } %>
+
+
+    </div>
+    <h3 align="center" class="sign head" id="active">Active</h3>
+    <div class="grid">
+
+        <% for (let conference of conferences) { %>
+        <%if(conference.startTime < currentDate && conference.endTime > currentDate) { %>
+        <div class="main5">
+            <article class="active">
+                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <div class="text">
+                    <p class="sign conference-header" align="center"><%=conference.name%></p>
+                    <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p><b>Address: </b><%=conference.address.adress%></p>
+                    <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
+                        class="submit button btn-block">Details</a>
+                </div>
+            </article>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+
+
+    </div>
+    <h3 align="center" class="sign head" id="upcoming">Upcoming</h3>
+    <div class="grid">
+
+        <% for (let conference of conferences) { %>
+        <%if(conference.startTime > currentDate) { %>
+        <div class="main5">
+            <article class="future">
+                <img src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <div class="text">
+                    <p class="sign conference-header" align="center"><%=conference.name%></p>
+                    <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                    <p class="p" maxlenght="20"><b>Description: </b><%=conference.description%></p>
+                    <p><b>Address: </b><%=conference.address.adress%></p>
+                    <a href="/allconferences/<%= conference._id %>" align="center" name="conferenceId"
+                        class="submit button btn-block">Details</a>
+                </div>
+            </article>
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+
+
+    </div>
+
+
+
+
+
+    <%- include('includes/end.ejs') %>

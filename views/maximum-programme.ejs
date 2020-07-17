@@ -1,0 +1,28 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body class="body">
+
+    
+    <%- include('includes/navigation.ejs') %>
+
+   
+    <div class="grid">
+     
+            <% for(let session of sessions) { %>
+
+              <article class="sessions">
+
+                <h3><b class="sign2">Hall: </b><%=session.hallId.name%></h3>
+                <h3><b class="sign2">Seats available: </b><%=session.sessionSeats%></h3>
+                <p class="pStartTime"><b class="sign2">Start time: </b><%=session.startTime%></p>
+                <p class="pEndTime"><b class="sign2">End time: </b><%=session.endTime%></p>
+
+              </article>
+
+            <% } %>
+
+    </div>
+
+
+    <%- include('includes/end.ejs') %>

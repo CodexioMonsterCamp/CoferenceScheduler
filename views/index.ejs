@@ -1,0 +1,45 @@
+<%- include('includes/head.ejs') %>
+
+</head>
+
+<body class="body">
+
+
+
+    <%- include('includes/navigation.ejs') %>
+
+    <div>
+
+        <p align="center" class="sign head">Join on of the active conferences:</p>
+        <main class="grid">
+            <% for (let conference of conferences) { %>
+            <% if(conference.startTime < currentDate && conference.endTime > currentDate) {%>
+            <div class="main1">
+                <article class="active">
+                    <img src="https://picsum.photos/600/400?image=1083" class="img" alt="Sample photo">
+                    <div class="text">
+                        <p class="sign conference-header" align="center"><%=conference.name%></p>
+                        <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                        <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                        <p maxlength="20"><b>Description: </b><%=conference.description%></p>
+                        <p><b>Address: </b><%=conference.address.adress%></p>
+                        <a href="/allconferences/<%= conference._id %>" name="conferenceId" align="center"
+                            class="submit button btn-block">Details</a>
+                    </div>
+                </article>
+            </div>
+            <% } %>
+
+            <% } %>
+            <!-- <script> var sass = require('node-sass'); </script> -->
+        </main>
+        <div class="body" style="margin: 30px 0;">
+            <div class="grid3">
+                <a class="button submit1" href="/allconferences">View all conferences</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <%- include('includes/end.ejs') %>

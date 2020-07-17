@@ -1,0 +1,7 @@
+{
+    "env" : {
+        "MONGO_USER" : "banea9",
+        "MONGO_PASSWORD" : "stonnerexe95",
+        "MONGO_DB_NAME" : "conferenceschedulercodexio"
+    }
+}

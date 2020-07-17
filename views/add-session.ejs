@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+
+
+    <%- include('includes/navigation.ejs') %>
+
+
+    <div class="continer">
+        <main>
+            <div class="q">
+                <p class="sign" align="center">Add New Session</p>
+                <form class="product-form" action="/add-session" method="POST">
+                    <label for="venueAddress">Venue address</label>
+                    <input class="seats" type="datetime-local" name="venueAddress" id="venueAddress"
+                        value="<%= conference.address.adress %>">
+
+                    <p class="sign1" align="center">Choose speaker</p>
+
+                    <select class="name form-control" name="speaker" id="speaker">
+
+                        <% for (let speaker of speakers) { %>
+                        <option value="<%=speaker._id%>"><%= speaker.name %></option>
+                        <% } %>
+                    </select>
+                    <select class="name form-control" name="hall" id="hall">
+                        <% for (let hall of halls) { %>
+                        <option value="<%=hall._id%>"><%= hall.name %> - Seats capacity: <%= hall.seats %> </option>
+                        <% } %>
+                    </select>
+                    <p class="sign1" align="center">Choose start date and time</p>
+                    <input class="seats" type="datetime-local" name="startTime" id="startTime" placeholder="Start time">
+                    <p class="sign1" align="center">Choose start end date and time</p>
+                    <input class="seats" type="datetime-local" name="endTime" id="endTime" placeholder="End time">
+                    <button class="submit btn" align="center" type="submit">Add Session</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+
+    <%- include('includes/end.ejs') %>

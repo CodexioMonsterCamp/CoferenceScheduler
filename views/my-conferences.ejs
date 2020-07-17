@@ -1,0 +1,82 @@
+<%- include('includes/head.ejs') %>
+
+
+</head>
+
+<body class="body">
+
+    <%- include('includes/navigation.ejs') %>
+    <% if(errorMessage) { %>
+    <div class="user-message--error">
+        <%= errorMessage %>
+    </div>
+
+    <% } %>
+    <% if(successMessage) { %>
+    <div class="user-message">
+        <%= successMessage %>
+    </div>
+
+    <% } %>
+
+
+    <div id="mySidenav" class="sidenav">
+        <a href="#myconf" id="pastBtn">Owner</a>
+        <a href="#attendee" id="activeBtn">Attendee</a>
+    </div>
+
+
+
+    <% if (userRole === "conferenceOwner") { %>
+    <p align="center" class="sign head" id="myconf">My Conferences</p>
+    <% } %>
+
+    <main class="grid">
+        <% for (let conference of conferences) { %>
+        <% if (userRole === "conferenceOwner") { %>
+
+        <div class="main1">
+            <article class="active">
+                <img src="<%=conference.conferenceImg>" class="img" alt="Sample photo">
+                <div class="text">
+                    <p class="sign conference-header"><%=conference.name%></p>
+                    <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                    <p  class=" p" maxlength="20"><b>Description: </b><%=conference.description%></p>
+                <p><b>Address: </b><%=conference.address.adress%></p>
+                <a href="/allconferences/<%= conference._id %>" name="conferenceId"
+                    class="submit button btn-block">Details</a>
+        </div>
+        </article>
+        </div>
+        <% } %>
+
+        <% } %>
+
+    </main>
+    <p align="center" class="sign head" id="attendee">My sessions to attend:</p>
+    <main class="grid">
+
+
+        <% for (let session of attendingSessions) { %>
+        <div class="main1">
+            <article class="active">
+                <img src="https://picsum.photos/600/400?image=1083" class="img" alt="Sample photo">
+                <div class="text">
+                    <p class="sign conference-header"><%=session.conferenceId.name%></p>
+                    <p><b>Start time: </b><%=session.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=session.endTime.toString().substring(0, 21)%></p>
+                    <p class="p" maxlength="20"><b>Description: </b><%=session.conferenceId.description%></p>
+                    <p><b>Address: </b><%=session.hallId.name%></p>
+                    <p><b>Speaker: </b><%=session.conferenceId.speakerName%></p>
+                </div>
+            </article>
+        </div>
+        <% } %>
+    </main>
+
+
+
+    <!--<script> var sass = require('node-sass'); </script>-->
+
+    <%- include('includes/end.ejs') %>

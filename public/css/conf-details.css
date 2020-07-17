@@ -1,0 +1,520 @@
+.collapse {
+  display: flex !important;
+}
+
+.collapse:not(.show) {
+  display: none !important;
+}
+
+.submit1 {
+  display: flex;
+  cursor: pointer;
+  border-radius: 5em;
+  color: #fff;
+  background: #0082e6;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 13px;
+  margin: auto;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.submit:hover {
+  border-radius: 2px #0082e6 !important;
+  background: transparent;
+  color: #0082e6;
+}
+
+.forgot {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: black;
+  padding-top: 15px;
+}
+
+a {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: black;
+  text-decoration: none;
+}
+
+.logout {
+  color: #f2f2f2;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.099px;
+  padding: 2vh;
+  border-radius: 3px;
+  /* text-transform: uppercase; */
+  font-family: "Poppins", sans-serif;
+}
+
+label {
+  display: inline-flex;
+}
+
+.btn {
+  display: block;
+}
+
+.btn:hover {
+  background: transparent;
+  color: #0082e6;
+  border: 1px solid #0082e6;
+  border-color: #0082e6;
+}
+
+a:link {
+  color: #0082e6;
+}
+
+.user-message {
+  margin: 20px auto;
+  width: 50%;
+  border: 1px solid green;
+  background-color: #47bb24;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+.user-message--error {
+  margin: 20px auto;
+  width: 50%;
+  border: 1px solid red;
+  background-color: #f17272;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+.img {
+  width: 70%;
+  border-radius: 50%;
+}
+
+.circular--landscape img {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.article {
+  z-index: 1000;
+  position: relative;
+  bottom: 2vh;
+  right: 10vh;
+  height: 30vh;
+}
+
+@media (max-width: 600px) {
+  .main {
+    border-radius: 0px;
+    max-width: min-content;
+  }
+}
+
+/*/////////nav bar css/////*/
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #0082e6;
+  min-height: 8vh;
+  width: 100%;
+  text-align: center;
+}
+
+label.logo {
+  color: #0082e6;
+  font-size: 33px;
+  line-height: 80px;
+  padding: 0 140px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+nav ul {
+  margin-right: 60px;
+  display: block;
+}
+
+nav ul li {
+  display: inline;
+  line-height: 80px;
+  margin: 0 1vh;
+  list-style-type: none;
+}
+
+nav ul li a {
+  color: #f2f2f2;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.099px;
+  padding: 2vh;
+  border-radius: 3px;
+  /* text-transform: uppercase; */
+
+  font-family: "Poppins", sans-serif;
+}
+
+a.active,
+a:hover {
+  transition: 0.5s;
+  border-radius: 5em;
+}
+
+a.active {
+  background: #1b9bff;
+}
+
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.button-nav {
+  display: none;
+}
+
+.labell {
+  margin: 0 40px 0 0;
+  font-size: 26px;
+  line-height: 70px;
+  display: none;
+  width: 35px;
+  float: right;
+}
+
+#toggle {
+  display: none;
+}
+
+.footer-copyright {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1025px) {
+  .labell {
+    display: block;
+    cursor: pointer;
+  }
+
+  .menuu {
+    text-align: center;
+    width: 100%;
+    display: none;
+  }
+
+  .menuu a {
+    display: block;
+    border-bottom: solid #d6d6d6;
+    margin: 0;
+  }
+
+  #toggle:checked + .menuu {
+    display: block;
+  }
+
+  .navbar {
+    display: block;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  body {
+    padding-top: 0;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .form1 {
+    width: fit-content;
+  }
+
+  .grid2 {
+    display: contents;
+    max-width: min-content;
+    text-align: left;
+    background-image: inherit;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: inline;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  .main1 {
+    display: grid;
+    margin-bottom: 28px;
+    max-width: fit-content;
+    width: 70vh;
+  }
+
+  p {
+    white-space: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: -webkit-fill-available;
+  }
+
+  .grid > article img {
+    width: 100%;
+  }
+
+  .grid > article img {
+    width: 100%;
+  }
+
+  .img {
+    max-width: webkit-fill-available;
+  }
+
+  .article {
+    z-index: 1000;
+    position: static;
+    bottom: 0;
+    right: 0;
+    height: 30vh;
+  }
+
+  .circular--landscape {
+    display: inline-block;
+    position: relative;
+    width: 300px;
+    height: none !important;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  .circular--landscape img {
+    width: auto;
+    height: 100%;
+    margin-left: none;
+  }
+
+  .submit1 {
+    width: -webkit-fill-available;
+  }
+
+  .buttons-data-filter {
+    display: block;
+  }
+
+  .main1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    background-color: #ffffff;
+    width: 90vh;
+    height: fit-content;
+    margin: auto;
+    border-radius: 1.5em;
+    box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    text-align: center;
+    margin-top: none !important;
+  }
+
+  .sidenav {
+    display: none;
+  }
+
+  nav ul li a {
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1.099px;
+    padding: none !important;
+    border-radius: 3px;
+    /* text-transform: uppercase; */
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+/* ACTIVE PAST UPCOMING BUTTONS STYLE END */
+
+.hidden {
+  display: none;
+}
+
+.notHidden {
+  display: flex;
+}
+
+.filterDiv {
+  display: none;
+}
+
+.show {
+  display: grid;
+}
+
+.btn.active {
+  background: transparent;
+  color: #0082e6;
+  border: 1px solid #0082e6;
+  border-color: #0082e6;
+}
+
+/* ACTIVE PAST UPCOMING BUTTONS STYLE END  /|\  */
+
+/* POP UP NOTIFICATION CONFERNCE DETAILS PAGE \|/  */
+
+/* Popup container - can be anything you want */
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #3a3f45;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #3a3f45ab;
+  width: 80%;
+  border-radius: 1.5em;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgba(255, 255, 255, 0.582);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* /////     end of popUp    ////// */
+
+.toggle {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: row;
+  border-radius: 1.5em;
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 8vh;
+}
+
+.imageCard {
+  width: 50%;
+}
+
+.textCard {
+  width: 50%;
+  color: #fff;
+  background-color: #1a1e1c75;
+  flex-wrap: wrap;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.popUpTxt {
+  white-space: normal;
+  overflow: unset;
+  text-overflow: unset;
+  display: block;
+  width: auto;
+  flex-wrap: wrap;
+}
+
+.headings {
+  margin-bottom: 60px;
+}
+
+.form-control {
+  border-radius: 1.5em;
+}
+
+.conference-header {
+  margin-top: 20px;
+}
+
+/* 
+    /* Add animation (fade in the popup) */
+/* @-webkit-keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    } */
