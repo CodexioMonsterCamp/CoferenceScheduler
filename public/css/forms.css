@@ -195,12 +195,12 @@ body {
   text-align: center;
 }
 
-.img {
+/* .img {
   width: 100%;
   border-radius: 1.5em;
   max-width: 200px;
   max-height: 200px;
-}
+} */
 
 .circular--landscape img {
   width: auto;
