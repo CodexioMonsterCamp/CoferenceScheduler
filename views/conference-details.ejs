@@ -92,7 +92,9 @@
     <% for(let session of allSessions) { %>
     <div class="main4  allSessions allSessionsDisplay" id="allSessionsDisplay">
       <article class="sessions">
-        <div class="speaker-image" style="margin:0 auto 20px; width: 300px; height:300px; border-radius: 50%; background-image: url('<%=session.speakerId.speakerImg%>'); background-position: center; background-repeat:no-repeat; background-size: cover;"></div>
+        <div class="speaker-image"
+          style="margin:0 auto 20px; width: 300px; height:300px; border-radius: 50%; background-image: url('<%=session.speakerId.speakerImg%>'); background-position: center; background-repeat:no-repeat; background-size: cover;">
+        </div>
         <p><b class="sign2">Speaker name: </b><%=session.speakerId.speakerName%></p>
         <p><b class="sign2">Speaker description: </b><%=session.speakerId.speakerDescription%></p>
         <p><b class="sign2">Hall: </b><%=session.hallId.name%></p>
