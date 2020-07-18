@@ -3,7 +3,7 @@
 }
 
 .collapse:not(.show) {
-  display: none !important;
+  display: none;
 }
 
 .submit1 {
