@@ -1,18 +1,23 @@
-<script src="./navScript.js"></script>
+<script>
+    const nav = document.querySelector('.menuu');
+    const toggle = document.querySelector('.navbar-toggler');
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('show');
+        console.log("click")
+
+    })
+</script>
 
 <!-- Footer -->
-<footer class="page-footer font-small blue">
+<footer
+    class="page-footer font-small blue">
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://www.codexio.com/"> Codexio.com</a>
+        <a href="https://www.codexio.com/">
+            Codexio.com</a>
     </div>
     <!-- Copyright -->
 
 </footer>
-<!-- Footer -->
-
-
-</body>
-
-</html>
+<!-- Footer --></body></html>

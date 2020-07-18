@@ -29,6 +29,7 @@ exports.getMyConferences = (req, res, next) => {
         Session.find()
             .populate("conferenceId")
             .populate("hallId")
+            .populate("speakerId")
             .then(sessions => {
                 let existingSessions = []
                 req.user.session.sessions.forEach(s => {

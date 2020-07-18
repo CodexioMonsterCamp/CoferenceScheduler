@@ -2,9 +2,9 @@
   display: flex !important;
 }
 
-.collapse:not(.show) {
+/* .collapse:not(.show) {
   display: flex !important;
-}
+} */
 
 .submit1 {
   display: flex;
@@ -381,10 +381,10 @@ a.active {
 .filterDiv {
   display: none;
 }
-
+/* 
 .show {
   display: grid;
-}
+} */
 
 .btn.active {
   background: transparent;
