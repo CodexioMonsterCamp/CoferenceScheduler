@@ -176,7 +176,7 @@ exports.postAddNewSession = (req, res, next) => {
                 speakerId,
                 endTime
             });
-           
+            console.log(existingHallSessions);
                 Conference.findById(conferenceId).populate("userId").then(conf => {
         
                     if (collisionCheck(session, existingHallSessions) === false ) {
@@ -186,7 +186,7 @@ exports.postAddNewSession = (req, res, next) => {
                         req.flash("error", "This speaker is not available in selected time frame.")
                         res.redirect("/myconferences");
                     } else if (session.startTime < conf.startTime || session.endTime > conf.endTime) {
-                        req.flash("error", "Session start time and end time must be between conference start time and end time")
+                        req.flash("error", "Session start time and end time must follow conference timeframe.")
                         res.redirect("/myconferences");
                     }else if (session.startTime > session.endTime) {
                         req.flash("error", "Session end time must be greated then start time. Please try again.");

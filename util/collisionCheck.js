@@ -16,9 +16,9 @@ function collisionCheck(session, sessions) {
     
         if(sessionIndex === undefined && sessions[0].startTime > session.endTime) {
             noCollision = true; 
-        } else if(sessionIndex === undefined && (sessions[0].endTime > session.startTime ||sessions[0].startTime < session.endTime)) {
+        } else if(sessionIndex === undefined && (sessions[0].endTime > session.startTime || sessions[0].startTime < session.endTime)) {
             noCollision = false;
-        }else if(sessionIndex === 0 && sessions[0].endTime < session.startTime) {
+        }else if(sessionIndex === 0 && (sessions[0].endTime < session.startTime && session.endTime < sessions[1].startTime ) ) {
             noCollision = true;
         } else if ((sessionIndex === sessions.length - 1 && sessions[sessionIndex].endTime <= session.startTime) ||
         (sessions[sessionIndex + 1].startTime >= session.endTime && sessions[sessionIndex].endTime <= session.startTime)) {
