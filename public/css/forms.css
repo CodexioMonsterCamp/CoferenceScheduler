@@ -44,9 +44,11 @@
   background: url("https://picsum.photos/600/400?image=1083") center no-repeat;
 }
 .conference-image {
-  width: 450px;
-  height:300px;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 1.5em;
 }
+
 .textt {
   font-family: "Ubuntu", sans-serif;
   color: #f2f2f2;
@@ -195,12 +197,12 @@ body {
   text-align: center;
 }
 
-/* .img {
+.img {
   width: 100%;
   border-radius: 1.5em;
   max-width: 200px;
   max-height: 200px;
-} */
+}
 
 .circular--landscape img {
   width: auto;
@@ -277,6 +279,22 @@ p {
 /* Conference add signup/in speaker add.... */
 
 .main {
+  padding: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 400px;
+  height: fit-content;
+  margin: 7em auto;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mainSpeaker {
   padding: 18px;
   display: flex;
   flex-wrap: wrap;
@@ -697,9 +715,13 @@ a.active {
     display: flow-root;
     padding: 40px;
   }
- 
+
   .main {
     max-width: min-content;
+  }
+
+  .mainSpeaker {
+    max-width: fit-content;
   }
 
   .main4 {

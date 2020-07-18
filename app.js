@@ -10,7 +10,7 @@ const helmet = require("helmet");
 const compression = require("compression");
 
 const app = express();
-const store = new MondoDBSession({uri: MONDODB_URI, collection: "loginsessions"})
+const store = new MondoDBSession({ uri: MONDODB_URI, collection: "loginsessions" })
 const User = require("./models/user");
 
 const userRoutes = require("./routes/user");
@@ -21,33 +21,33 @@ app.set("views", "views");
 
 app.use(helmet());
 app.use(compression());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({secret: 'my secret', resave: false, saveUninitialized: false, store: store}))
+app.use(session({ secret: 'my secret', resave: false, saveUninitialized: false, store: store }))
 app.use(flash())
 app.use((req, res, next) => {
-    if (!req.session.user) {
-      next();
-    } else {
-      User.findById(req.session.user._id)
-        .then(user => {
-          req.user = user;
-          req.date = new Date()
-          next();
-        })
-        .catch(err => console.log(err));
-    }
-  });
+  if (!req.session.user) {
+    next();
+  } else {
+    User.findById(req.session.user._id)
+      .then(user => {
+        req.user = user;
+        req.date = new Date()
+        next();
+      })
+      .catch(err => console.log(err));
+  }
+});
 app.use(userRoutes)
 app.use(authRoutes)
 
 //test
 
 mongoose.connect(MONDODB_URI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
+  useUnifiedTopology: true,
+  useNewUrlParser: true
 }).then(result => {
-    console.log("Connected to DB")
-    app.listen(process.env.PORT || 3000)
+  console.log("Connected to DB")
+  app.listen(process.env.PORT || 3000)
 }).catch(err => console.log(err))
