@@ -95,9 +95,9 @@ a:link {
 
 .img {
   width: 70%;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
-
+/* 
 .circular--landscape img {
   width: auto;
   height: 100%;
@@ -111,7 +111,7 @@ a:link {
   height: 300px;
   overflow: hidden;
   border-radius: 50%;
-}
+} */
 
 .article {
   z-index: 1000;
