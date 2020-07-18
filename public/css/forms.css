@@ -649,9 +649,6 @@ a.active {
     border-bottom: solid #d6d6d6;
     margin: 0;
   }
-  #toggle:checked + .menuu {
-    display: unset;
-  }
   .navbar {
     display: block;
   }
@@ -727,6 +724,10 @@ a.active {
   .textt {
     padding: 0;
     line-height: 40px;
+  }
+
+  nav ul {
+    padding-left: 0px !important;
   }
 
   .footer-copyright {
@@ -828,10 +829,12 @@ a.active {
     font-family: "Poppins", sans-serif;
   }
   .navbar .show {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
   .menuu:not(.show) {
-    display:none;
+    display: none;
   }
 }
 
