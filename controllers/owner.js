@@ -7,7 +7,7 @@ const checkExistingSession = require("../util/checkExistingSession");
 const { nameRegex } = require("../util/nameRegex");
 const User = require("../models/user");
 const collisionCheck = require("../util/collisionCheck");
-const maximumProgramme = require("../util/maximumProgrammeAlgorithm");
+const sortSessions = require("../util/sortUserSessions");
 
 
 exports.getMyConferences = (req, res, next) => {
@@ -176,7 +176,6 @@ exports.postAddNewSession = (req, res, next) => {
                 speakerId,
                 endTime
             });
-            console.log(existingHallSessions);
                 Conference.findById(conferenceId).populate("userId").then(conf => {
         
                     if (collisionCheck(session, existingHallSessions) === false ) {
@@ -300,9 +299,7 @@ exports.postJoinSession = (req, res, next) => {
 exports.maximumProgramme = (req, res, next) => {
     const conferenceId = req.body.conferenceId;
     Session.find().then(sessions => {
-
         let userSessions = []
-
         req.user.session.sessions.forEach(s => {
             sessions.forEach(session => {
                 if (session._id.toString() === s._id.toString()) {
@@ -310,19 +307,34 @@ exports.maximumProgramme = (req, res, next) => {
                 }
             })
         })
-
+        userSessions.sort(sortSessions)
         let conferenceSessions = sessions.filter(s => s.conferenceId.toString() === conferenceId.toString())
-
-        const posibleSessions = maximumProgramme(conferenceSessions, userSessions);
-
-        posibleSessions.forEach(session => req.user.addSession(session)) //Throwing exceptions ...
-
-        res.render("maximum-programme", {
-            pageTitle: "Maximum Programme",
-            isLoggedIn: req.session.isLoggedIn,
-            path: "/maximum-programme",
-            sessions: posibleSessions,
+        conferenceSessions.sort((a,b) => {
+            let durationOne = a.endTime - a.startTime;
+            let durationTwo = b.endTime - b.startTime;
+            return durationOne - durationTwo;
         })
+        for (const conferenceSession of conferenceSessions) {
+            if(collisionCheck(conferenceSession,userSessions)){
+                if(conferenceSession.sessionSeats-1>=0) {
+                    console.log(conferenceSession)
+                    userSessions.push(conferenceSession);
+                    userSessions.sort(sortSessions)
+                    req.user.addSession(conferenceSession).then(() => {
+                        conferenceSession.seatTaken().then(() => {
+                            console.log("1")    
+                        });
+                    })
+                    
+                }             
+            }
+        }
+        // User.findById({_id: req.user._id}).then(user => {
+        //     user.addSessions(possibleSessions[0], possibleSessions[1])
+        // }).then(() => {
+        //     res.redirect("/myconferences")
+        // })
+       res.redirect("/myconferences")
     })
 }
 
