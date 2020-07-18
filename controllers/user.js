@@ -88,7 +88,6 @@ exports.getConferenceDetails = (req, res, next) => {
 
     }).catch(err => console.log(err))
 }
-
 exports.getAllSessions = (req,res,next)=>{
     ConferenceSession.find().populate("conferenceId").then(conf=>{
         res.render("all-sessions",{
@@ -98,9 +97,6 @@ exports.getAllSessions = (req,res,next)=>{
             currentDate : req.date,
             isLoggedIn: req.session.isLoggedIn
         })
-    }
-
-    );
-
+    });
 }
 

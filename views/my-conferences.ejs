@@ -46,7 +46,7 @@
 
         <div class="mainGrid">
             <article class="active">
-                <img class="conference-image" src="<%=conference.conferenceImg%>" class="img" alt="Sample photo">
+                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: 100% 100%;"></div>
                 <div class="text">
                     <p class="sign conference-header"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
@@ -70,7 +70,7 @@
         <% for (let session of attendingSessions) { %>
         <div class="mainGrid">
             <article class="active">
-                <img class="conference-image" src="https://picsum.photos/600/400?image=1083" class="img" alt="Sample photo">
+                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: 100% 100%;"></div>
                 <div class="text">
                     <p class="sign conference-header"><%=session.conferenceId.name%></p>
                     <p><b>Start time: </b><%=session.startTime.toString().substring(0, 21)%></p>
