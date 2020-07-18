@@ -41,7 +41,7 @@ p {
         <%if(conference.endTime < currentDate) { %>
         <div class="mainGrid">
             <article class="past ">
-                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: 100% 100%;"></div>
+                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: contain"></div>
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
@@ -65,7 +65,7 @@ p {
         <%if(conference.startTime < currentDate && conference.endTime > currentDate) { %>
         <div class="mainGrid">
             <article class="active">
-                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: 100% 100%;"></div>
+                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: contain"></div>
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
@@ -90,7 +90,7 @@ p {
         <%if(conference.startTime > currentDate) { %>
         <div class="mainGrid">
             <article class="future">
-                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: 100% 100%;"></div>
+                <div class="speaker-image" style="width: 100%; height:300px; background-image: url('<%=conference.conferenceImg%>'); background-position: center; background-repeat:no-repeat; background-size: contain"></div>
                 <div class="text">
                     <p class="sign conference-header" align="center"><%=conference.name%></p>
                     <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
