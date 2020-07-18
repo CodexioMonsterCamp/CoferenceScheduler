@@ -237,7 +237,9 @@ a.active {
   }
 
   #toggle:checked + .menuu {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .navbar {
