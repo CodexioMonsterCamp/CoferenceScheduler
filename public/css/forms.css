@@ -638,6 +638,14 @@ a.active {
   border-radius: 1.5em;
 }
 
+.containerSpeaker {
+  padding-top: 0px;
+}
+
+.signatureSpeker {
+  padding-bottom: 0px !important;
+}
+
 @media only screen and (max-width: 1024px) {
   .buttons-data-filter2 {
     display: flow-root !important;

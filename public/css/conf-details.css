@@ -103,6 +103,10 @@ a:link {
   border-radius: 1.5em;
 }
 
+.imgSessions {
+  margin-bottom: 15px;
+}
+
 .circular--landscape img {
   width: auto;
   height: 100%;
