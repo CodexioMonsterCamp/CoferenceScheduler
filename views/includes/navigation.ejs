@@ -21,6 +21,8 @@
                 <a class="<%= path === '/all-sessions' ? 'active' : '' %>" href="/allsessions">All
                     sessions</a>
             </li>
+            <% if (isLoggedIn) { %>
+
             <li>
                 <a class="<%= path === '/myconferences' ? 'active' : '' %>" href="/myconferences">My conferences</a>
             </li>
@@ -37,7 +39,6 @@
                 <a class="<%= path === '/add-hall' ? 'active' : '' %>" href="/add-hall">Add hall
                 </a>
             </li>
-            <% if (isLoggedIn) { %>
             <!-- <a class="<%= path === '/logout' ? 'active' : '' %>" href="/logout">
                         <button type="submit">Logout</button>
                     </a> -->
