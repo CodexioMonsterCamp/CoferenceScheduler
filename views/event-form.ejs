@@ -39,7 +39,7 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.endTime < currentDate) { %>
-        <div class="mainGrid">
+        <div class="mainGrid" data-tilt>
             <article class="past ">
                 <div class="speaker-image">
                     <img class="speaker-image" src="<%=conference.conferenceImg%>" alt="">
@@ -65,7 +65,7 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.startTime < currentDate && conference.endTime > currentDate) { %>
-        <div class="mainGrid">
+        <div class="mainGrid" data-tilt>
             <article class="active">
                 <div class="speaker-image">
                     <img class="speaker-image" src="<%=conference.conferenceImg%>" alt="">
@@ -92,7 +92,7 @@
 
         <% for (let conference of conferences) { %>
         <%if(conference.startTime > currentDate) { %>
-        <div class="mainGrid">
+        <div class="mainGrid" data-tilt>
             <article class="future">
                 <div class="speaker-image">
                     <img class="speaker-image" src="<%=conference.conferenceImg%>" alt="">
