@@ -19,6 +19,7 @@ exports.getIndex = (req, res, next) => {
             path: '/',
             conferences: active,
             isLoggedIn: req.session.isLoggedIn,
+            userRole: "",
             currentDate: req.data || date,
 
         })
@@ -46,6 +47,7 @@ exports.getConferences = (req, res, next) => {
         res.render("event-form", {
             pageTitle: "All conferences",
             isLoggedIn: req.session.isLoggedIn,
+            userRole: "",
             path: '/all-conferences',
             conferences: conferences,
             currentDate: req.date || date,
@@ -69,6 +71,7 @@ exports.getConferenceDetails = (req, res, next) => {
                         halls: halls || [],
                         speakers: speakers || [],
                         pageTitle: conf.name,
+                        userRole: "",
                         isLoggedIn: req.session.isLoggedIn,
                         path: "/all-conferences",
                         conference: conf,
@@ -82,12 +85,14 @@ exports.getConferenceDetails = (req, res, next) => {
     }).catch(err => console.log(err))
 }
 exports.getAllSessions = (req, res, next) => {
+    const date = new Date()
     ConferenceSession.find().populate("conferenceId").then(conf => {
         res.render("all-sessions", {
             conferences: conf,
             pageTitle: 'All Sessions',
+            userRole: "",
             path: "/all-sessions",
-            currentDate: req.date,
+            currentDate: req.date || date,
             isLoggedIn: req.session.isLoggedIn
         })
     });

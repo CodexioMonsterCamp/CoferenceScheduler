@@ -13,7 +13,6 @@
 <body class="body">
 
 
-
     <%- include('includes/navigation.ejs') %>
 
     <div id="mySidenav" class="sidenav">
@@ -99,6 +98,29 @@
 
         <% } %>
         <% } %>
+
+        <% for (let conference of conferences) { %>
+            <%if(conference.startTime > currentDate) { %>
+            <div class="mainGrid">
+                <article class="future">
+                    <div class="speaker-image">
+                        <img class="speaker-image" src="<%=conference.conferenceId.conferenceImg%>" alt="">
+                    </div>
+                    <div class="text">
+                        <p class="sign conference-header" align="center"><%=conference.conferenceId.name%></p>
+                    <p><b>Start time: </b><%=conference.startTime.toString().substring(0, 21)%></p>
+                    <p><b>End time: </b><%=conference.endTime.toString().substring(0, 21)%></p>
+                    <p maxlenght="20"><b>Description: </b><%=conference.conferenceId.description%></p>
+                    <form class="product-form form1" action="/join-session" method="POST">
+                        <input type="hidden" value="<%= conference._id %>" name="sessionId" />
+                        <input type="hidden" value="<%= conference.conferenceId._id %>" name="conferenceId" />
+                        <button class="submit button btn-block" type="submit">Join session</button>
+                    </form>
+                    </div>
+                </article>
+            </div>
+            <% } %>
+            <% } %>
 
     </div>
 
