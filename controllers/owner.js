@@ -330,13 +330,12 @@ exports.maximumProgramme = (req, res, next) => {
                     }             
                 }
             }
+            res.redirect("myconferences")
         }
 
         maximumProgrammeFunc(conferenceSessions, userSessions)
 
        
-    }).then(() => {
-        res.redirect("/myconferences")
     })
     .catch(err => console.log(err))
 }
