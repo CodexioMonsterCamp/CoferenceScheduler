@@ -72,8 +72,6 @@ exports.getConferenceDetails = (req, res, next) => {
                         isLoggedIn: req.session.isLoggedIn,
                         path: "/all-conferences",
                         conference: conf,
-
-
                         upcommingSessions: upcommingSessions
 
                     })
