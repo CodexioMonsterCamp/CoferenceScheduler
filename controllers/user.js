@@ -19,6 +19,7 @@ exports.getIndex = (req, res, next) => {
             path: '/',
             conferences: active,
             isLoggedIn: req.session.isLoggedIn,
+            userRole: "",
             currentDate: req.data || date,
 
         })
@@ -46,6 +47,7 @@ exports.getConferences = (req, res, next) => {
         res.render("event-form", {
             pageTitle: "All conferences",
             isLoggedIn: req.session.isLoggedIn,
+            userRole: "",
             path: '/all-conferences',
             conferences: conferences,
             currentDate: req.date || date,
@@ -56,7 +58,6 @@ exports.getConferences = (req, res, next) => {
 
 }
 exports.getConferenceDetails = (req, res, next) => {
-
     const confId = req.params.conferenceId;
     Conference.findOne({ _id: confId }).populate("address").then(conf => {
         ConferenceSession.find({ conferenceId: conf._id }).populate("hallId").populate("speakerId").then(sessions => {
@@ -69,6 +70,7 @@ exports.getConferenceDetails = (req, res, next) => {
                         halls: halls || [],
                         speakers: speakers || [],
                         pageTitle: conf.name,
+                        userRole: req.user.role || "/",
                         isLoggedIn: req.session.isLoggedIn,
                         path: "/all-conferences",
                         conference: conf,
@@ -82,12 +84,13 @@ exports.getConferenceDetails = (req, res, next) => {
     }).catch(err => console.log(err))
 }
 exports.getAllSessions = (req, res, next) => {
-    ConferenceSession.find().populate("conferenceId").then(conf => {
+    const date = new Date()
+    ConferenceSession.find().populate("conferenceId").populate("speakerId").then(conf => {
         res.render("all-sessions", {
             conferences: conf,
             pageTitle: 'All Sessions',
             path: "/all-sessions",
-            currentDate: req.date,
+            currentDate: req.date || date,
             isLoggedIn: req.session.isLoggedIn
         })
     });

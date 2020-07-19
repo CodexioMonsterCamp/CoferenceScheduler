@@ -69,6 +69,7 @@ exports.getAddConference = (req, res, next) => {
             venues: venues.slice(0, 1000),
             pageTitle: 'Add Conference',
             isLoggedIn: req.session.isLoggedIn,
+            userRole: req.user.role,
             path: "/add-conferences",
             errorMessage: message
         })
@@ -111,8 +112,11 @@ exports.postAddConference = (req, res, next) => {
         else {
 
             Conference.findOne({ name: name }).then(conf => {
-
-                if (conf) {
+                if(req.user.role !== 'conferenceOwner') {
+                    req.flash("error", "You have to be logged on as conference owner to create a conference.")
+                    res.redirect("/add-conference");
+                }
+                else if (conf) {
                     req.flash("error", "Conference name is already in use. Please choose different name.")
                     res.redirect("/add-conference");
                 } else if (newConference.startTime > newConference.endTime) {
@@ -164,7 +168,10 @@ exports.postAddNewSession = (req, res, next) => {
             console.log(session)
                 Conference.findById(conferenceId).populate("userId").then(conf => {
         
-                    if (collisionCheck(session, existingHallSessions) === false ) {
+                    if(req.user.role !== 'conferenceOwner') {
+                        req.flash("error", "You have to be logged on as conference owner to create a conference.")
+                        res.redirect("/add-conference");
+                    } else if (collisionCheck(session, existingHallSessions) === false ) {
                         req.flash("error", "This hall is not available in selected time frame.")
                         res.redirect("/myconferences");
                     } else if (collisionCheck(session, existingSpeakerSessions) === false) {
@@ -206,6 +213,7 @@ exports.getAddHall = (req, res, next) => {
         res.render("add-hall", {
             venues: venues,
             pageTitle: 'Add Hall',
+            userRole: req.user.role,
             isLoggedIn: req.session.isLoggedIn,
             path: "/add-hall",
             errorMessage: message
@@ -226,7 +234,11 @@ exports.postAddHall = (req, res, next) => {
                     isExisting = true;
                 }
             }
-            if (isExisting) {
+            if(req.user.role !== 'conferenceOwner') {
+                req.flash("error", "You have to be logged on as conference owner to create a conference.")
+                res.redirect("/add-conference");
+            }
+            else if (isExisting) {
                 req.flash("error", "This hall already exists.")
                 res.redirect("/add-hall");
             } else {
@@ -330,6 +342,7 @@ exports.getAddSpeaker = (req,res,next) => {
             conferences: conferences,
             pageTitle: 'Add Speaker',
             isLoggedIn: req.session.isLoggedIn,
+            userRole: "",
             path: "/add-speaker",
             errorMessage: message
             
@@ -343,8 +356,10 @@ exports.postAddSpeaker = (req,res,next) => {
     speakerName = speakerName.trim();
 
     const speakerNameFound = speakerName.match(/([A-Z]{1,1}[A-Za-z]+) ([A-Z]{1,1}[A-Za-z]+)/gm);
-
-    if (speakerName === '') {
+    if(req.user.role !== 'conferenceOwner') {
+        req.flash("error", "You have to be logged on as conference owner to create a conference.")
+        res.redirect("/add-conference");
+    } else if (speakerName === '') {
         req.flash("error", "Speaker name cannot be empty string!")
         res.redirect("/add-conference");
     } else if (speakerNameFound === null || speakerNameFound[0] !== speakerName) {

@@ -24,8 +24,8 @@
                     <option value="<%=venue._id%>"><%= venue.adress %></option>
                     <% } %>
                 </select>
-                <input class="name " type="text" name="name" id="name" placeholder="Name">
-                <input class="name" type="number" id="seats" name="seats" placeholder="Seats Number" min="1">
+                <input required class="name " type="text" name="name" id="name" placeholder="Name">
+                <input required class="name" type="number" id="seats" name="seats" placeholder="Seats Number" min="1">
                 <button class="submit button btn-block" align="center" type="submit">Add new hall</button>
             </form>
         </div>

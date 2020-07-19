@@ -16,21 +16,21 @@
             <div class="main3 media500 main-width ">
 
                 <form class="product-form" action="/add-conference" method="POST">
-                    <input class="description" type=" text" name="name" id="name-conference"
+                    <input required class="description" type=" text" name="name" id="name-conference"
                         placeholder="Name (e.g. 'Sample conference')">
-                    <input class="description" type=" text" name="conferenceImg" placeholder="Conference Image URL">
+                    <input required class="description" type=" text" name="conferenceImg" placeholder="Conference Image URL">
                     <p class="signature1" align="center">Start time</p>
-                    <input class="name" type="datetime-local" name="startTime" id="startTime">
+                    <input required class="name" type="datetime-local" name="startTime" id="startTime">
                     <p class="signature1" align="center">End time</p>
-                    <input class="name" type="datetime-local" name="endTime" id="endTime">
+                    <input required class="name" type="datetime-local" name="endTime" id="endTime">
                     <p class="signature1" align="center">Address</p>
                     <select class="name select-css" name="address" id="venue">
                         <% for (let venue of venues) { %>
                         <option value="<%=venue._id%>"><%= venue.adress %></option>
                         <% } %>
-                        <textarea class="description" name="description" id="description-conference" rows="5"
-                            placeholder="Conference description"></textarea>
                     </select>
+                    <textarea required class="description" name="description" id="description-conference" rows="5"
+                        placeholder="Conference description"></textarea>
                     <button class="submit button btn-block" align="center" type="submit">Add conference</button>
                 </form>
             </div>
