@@ -399,9 +399,3 @@ exports.postAddSpeaker = (req,res,next) => {
     }
     
 }
-
-        // User.findById({_id: req.user._id}).then(user => {
-        //     user.addSessions(possibleSessions[0], possibleSessions[1])
-        // }).then(() => {
-        //     res.redirect("/myconferences")
-        // })
