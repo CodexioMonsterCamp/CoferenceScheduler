@@ -18,13 +18,13 @@ router.post("/add-conference", isAuthenticated, ownerController.postAddConferenc
 router.get("/add-speaker", isAuthenticated, ownerController.getAddSpeaker);
 router.post("/add-speaker", isAuthenticated, ownerController.postAddSpeaker);
 
-router.post("/add-session", ownerController.postAddNewSession);
+router.post("/add-session",isAuthenticated, ownerController.postAddNewSession);
 
 router.get("/allconferences/:conferenceId", userController.getConferenceDetails)
 
-router.get("/myconferences", ownerController.getMyConferences);
+router.get("/myconferences",isAuthenticated, ownerController.getMyConferences);
 
-router.post("/join-session", ownerController.postJoinSession);
+router.post("/join-session",isAuthenticated, ownerController.postJoinSession);
 
 router.get("/allsessions", userController.getAllSessions);
 

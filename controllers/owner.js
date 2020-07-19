@@ -146,7 +146,7 @@ exports.postAddNewSession = (req, res, next) => {
             let existingHallSessions = getSessions(hall.hallSession.sessions, sessions)
             existingHallSessions.sort((a,b) => a.startTime - b.startTime);
             
-            
+            console.log(existingHallSessions)
             
             Speaker.find().then(speakers => {
                 const speaker = speakers.filter(s => s._id.toString() === speakerId.toString())[0];
@@ -161,6 +161,7 @@ exports.postAddNewSession = (req, res, next) => {
                 speakerId,
                 endTime
             });
+            console.log(session)
                 Conference.findById(conferenceId).populate("userId").then(conf => {
         
                     if (collisionCheck(session, existingHallSessions) === false ) {
@@ -290,26 +291,26 @@ exports.maximumProgramme = (req, res, next) => {
             return durationOne - durationTwo;
         })
         console.log(conferenceSessions.length)
-        // async function maximumProgrammeFunc(conferenceSessions, userSessions) {
+        async function maximumProgrammeFunc(conferenceSessions, userSessions) {
            
-        //     for (let i = 0; i < conferenceSessions.length; i++) {
-        //         if(collisionCheck(conferenceSessions[i],userSessions)){
-        //             if(conferenceSessions[i].sessionSeats-1>=0) {
-        //                 try {
-        //                     userSessions.push(conferenceSessions[i]);
-        //                     userSessions.sort(sortSessions)
-        //                     await req.user.addSession(conferenceSessions[i])
-        //                     await conferenceSessions[i].seatTaken()
-        //                 } catch(err) {
-        //                     console.log(err)
-        //                 }
-        //             }             
-        //         }
-        //     }
-        //     res.redirect("myconferences")
-        // }
+            for (let i = 0; i < conferenceSessions.length; i++) {
+                if(collisionCheck(conferenceSessions[i],userSessions)){
+                    if(conferenceSessions[i].sessionSeats-1>=0) {
+                        try {
+                            userSessions.push(conferenceSessions[i]);
+                            userSessions.sort(sortSessions)
+                            await req.user.addSession(conferenceSessions[i])
+                            await conferenceSessions[i].seatTaken()
+                        } catch(err) {
+                            console.log(err)
+                        }
+                    }             
+                }
+            }
+            res.redirect("myconferences")
+        }
 
-        // maximumProgrammeFunc(conferenceSessions, userSessions)
+        maximumProgrammeFunc(conferenceSessions, userSessions)
 
        
     })
