@@ -8,7 +8,7 @@ const checkExistingSession = require("../util/checkExistingSession");
 const { nameRegex } = require("../util/nameRegex");
 const collisionCheck = require("../util/collisionCheck");
 const sortSessions = require("../util/sortUserSessions");
-const getSessions = require("../util/getSessions")
+const getSessions = require("../util/getSessions");
 
 exports.getMyConferences = (req, res, next) => {
     let message = req.flash("error");
@@ -279,32 +279,37 @@ exports.maximumProgramme = (req, res, next) => {
     Session.find().then(sessions => {
         let userSessions = getSessions(req.user.session.sessions, sessions)
         userSessions.sort(sortSessions)
-        let conferenceSessions = sessions.filter(s => s.conferenceId.toString() === conferenceId.toString())
+        let conferenceSessions = sessions.filter(s => {
+            if(s.conferenceId.toString() === conferenceId.toString() && s.startTime > new Date()) {
+                return s;
+            }
+        })
         conferenceSessions.sort((a,b) => {
             let durationOne = a.endTime - a.startTime;
             let durationTwo = b.endTime - b.startTime;
             return durationOne - durationTwo;
         })
-        async function maximumProgrammeFunc(conferenceSessions, userSessions) {
+        console.log(conferenceSessions.length)
+        // async function maximumProgrammeFunc(conferenceSessions, userSessions) {
            
-            for (let i = 0; i < conferenceSessions.length; i++) {
-                if(collisionCheck(conferenceSessions[i],userSessions)){
-                    if(conferenceSessions[i].sessionSeats-1>=0) {
-                        try {
-                            userSessions.push(conferenceSessions[i]);
-                            userSessions.sort(sortSessions)
-                            await req.user.addSession(conferenceSessions[i])
-                            await conferenceSessions[i].seatTaken()
-                        } catch(err) {
-                            console.log(err)
-                        }
-                    }             
-                }
-            }
-            res.redirect("myconferences")
-        }
+        //     for (let i = 0; i < conferenceSessions.length; i++) {
+        //         if(collisionCheck(conferenceSessions[i],userSessions)){
+        //             if(conferenceSessions[i].sessionSeats-1>=0) {
+        //                 try {
+        //                     userSessions.push(conferenceSessions[i]);
+        //                     userSessions.sort(sortSessions)
+        //                     await req.user.addSession(conferenceSessions[i])
+        //                     await conferenceSessions[i].seatTaken()
+        //                 } catch(err) {
+        //                     console.log(err)
+        //                 }
+        //             }             
+        //         }
+        //     }
+        //     res.redirect("myconferences")
+        // }
 
-        maximumProgrammeFunc(conferenceSessions, userSessions)
+        // maximumProgrammeFunc(conferenceSessions, userSessions)
 
        
     })

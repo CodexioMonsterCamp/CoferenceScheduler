@@ -48,10 +48,7 @@ userSchema.methods.addSession = function (session) {
     this.session.sessions.push(session);
     return this.save()
 }
-userSchema.methods.addSessions = function (array) {
-    this.session.sessions.push(array[0], array[1]);
-    return this.save()
-}
+
 
 
 module.exports = mongoose.model("User", userSchema)
