@@ -522,7 +522,7 @@ a {
 
 .nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   background: #0082e6;
   min-height: 8vh;
@@ -547,6 +547,11 @@ label.logo {
   padding: 0 140px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+}
+
+.logo {
+  position: absolute;
+  left: 20px;
 }
 
 nav ul {
@@ -658,7 +663,7 @@ div.speaker-image {
   padding-bottom: 0px !important;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
   .buttons-data-filter2 {
     display: flow-root !important;
   }
