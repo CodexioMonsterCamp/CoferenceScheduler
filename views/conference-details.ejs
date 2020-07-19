@@ -28,10 +28,7 @@
   </div>
 
 
-
-
-
-
+<% if (userRole === "conferenceOwner") { %>
   <div class=sign1>
     <label class="sign head headings">Add sessions</label>
   </div>
@@ -70,6 +67,11 @@
       <button class="submit button btn-block" type="submit">Add Session</button>
     </form>
   </div>
+ 
+<% } %>
+
+
+
 
   <div class=sign1>
     <label class="sign head headings">Upcomming Sessions</label>

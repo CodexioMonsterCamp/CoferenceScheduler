@@ -28,11 +28,11 @@
                         <option value="<%=conference._id%>"><%= conference.name %></option>
                         <% } %>
                     </select>
-                    <input type="text" class="name product-form" align="center" name="speakerName" id="speakerName"
+                    <input required type="text" class="name product-form" align="center" name="speakerName" id="speakerName"
                         placeholder="Speaker name">
-                    <input type="text" class="name" name="speakerDescription" align="center" id="speakerDescription"
+                    <input required type="text" class="name" name="speakerDescription" align="center" id="speakerDescription"
                         placeholder="Description">
-                    <input type="link" class="name " name="speakerImg" align="center" id="speakerImg"
+                    <input required type="link" class="name " name="speakerImg" align="center" id="speakerImg"
                         placeholder="Profile image">
                     <button class="submit button btn-block" align="center" type="submit">Add Speaker</button>
                 </form>

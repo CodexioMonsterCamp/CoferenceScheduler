@@ -58,7 +58,6 @@ exports.getConferences = (req, res, next) => {
 
 }
 exports.getConferenceDetails = (req, res, next) => {
-
     const confId = req.params.conferenceId;
     Conference.findOne({ _id: confId }).populate("address").then(conf => {
         ConferenceSession.find({ conferenceId: conf._id }).populate("hallId").populate("speakerId").then(sessions => {
@@ -71,7 +70,7 @@ exports.getConferenceDetails = (req, res, next) => {
                         halls: halls || [],
                         speakers: speakers || [],
                         pageTitle: conf.name,
-                        userRole: "",
+                        userRole: req.user.role || "/",
                         isLoggedIn: req.session.isLoggedIn,
                         path: "/all-conferences",
                         conference: conf,
@@ -86,11 +85,10 @@ exports.getConferenceDetails = (req, res, next) => {
 }
 exports.getAllSessions = (req, res, next) => {
     const date = new Date()
-    ConferenceSession.find().populate("conferenceId").then(conf => {
+    ConferenceSession.find().populate("conferenceId").populate("speakerId").then(conf => {
         res.render("all-sessions", {
             conferences: conf,
             pageTitle: 'All Sessions',
-            userRole: "",
             path: "/all-sessions",
             currentDate: req.date || date,
             isLoggedIn: req.session.isLoggedIn
