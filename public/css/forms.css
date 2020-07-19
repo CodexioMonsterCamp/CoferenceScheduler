@@ -416,7 +416,7 @@ p {
   padding-bottom: 10px;
   padding-top: 10px;
   font-family: "Ubuntu", sans-serif;
-  font-size: 13px;
+  font-size: 2vh !important;
   margin: auto;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
   text-align: center;
@@ -874,7 +874,7 @@ a.active {
   width: 70px; /* Set a specific width */
   text-decoration: none; /* Remove underline */
   font-size: 12px; /* Increase font size */
-  color: white; /* White text color */
+  color: #0082e6; /* White text color */
   border-radius: 0 1.5em 1.5em 0; /* Rounded corners on the top right and bottom right side */
   background-color: #0082e6;
 }
