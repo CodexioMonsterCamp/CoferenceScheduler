@@ -218,7 +218,7 @@ a.active {
   text-align: center;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 928px) {
   .labell {
     display: block;
     cursor: pointer;
@@ -254,10 +254,6 @@ a.active {
     padding-top: 0;
     display: inline-block;
     width: 100%;
-  }
-
-  .form1 {
-    width: fit-content;
   }
 
   .grid2 {
