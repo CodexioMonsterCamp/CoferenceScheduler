@@ -91,7 +91,7 @@ exports.postSignup = (req, res, next) => {
             }
 
             if (password !== confirmPassword) {
-                req.flash("error", "Different passwords");
+                req.flash("error", "Please make sure your passwords match");
                 return res.redirect("/signup");
             }
             return bcrypt.hash(password, 12).then(hashedPassword => {
@@ -108,7 +108,7 @@ exports.postSignup = (req, res, next) => {
                     }
                 });
                 return user.save();
-            }).then(result => {
+            }).then(() => {
                 req.flash("success", "You have successfully signed in. Please login to continue...")
                 res.redirect("/login");
             });
