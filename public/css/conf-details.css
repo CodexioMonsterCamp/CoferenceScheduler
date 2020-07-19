@@ -94,8 +94,28 @@ a:link {
 }
 
 .img {
+  width: 70%;
+  border-radius: 50%;
+}
+
+.img2 {
   width: 100%;
   border-radius: 1.5em;
+}
+
+.circular--landscape img {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .article {
@@ -112,7 +132,6 @@ a:link {
     max-width: min-content;
   }
 }
-
 
 .footer-copyright {
   text-align: center;
