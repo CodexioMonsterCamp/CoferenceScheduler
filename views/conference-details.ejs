@@ -15,7 +15,7 @@
 
   <div class="main2 marginn ">
     <article class="active">
-      <img src="<%=conference.conferenceImg%>" class="img" alt="Conference Photo">
+      <img src="<%=conference.conferenceImg%>" class="img2" alt="Conference Photo">
       <div class="text">
         <p class="sign conference-header" align="center"><%=conference.name%></p>
         <p><b>Description: </b><%=conference.description%></p>
@@ -81,8 +81,8 @@
     <% for(let session of allSessions) { %>
     <div class="main4  allSessions allSessionsDisplay" id="allSessionsDisplay">
       <article class="sessions">
-        <div class="speaker-image"
-          style="margin:0 auto 20px; width: 300px; height:300px; border-radius: 50%; background-image: url('<%=session.speakerId.speakerImg%>'); background-position: center; background-repeat:no-repeat; background-size: cover;">
+        <div class="speaker-image">
+          <img class="speaker-image" src="<%=session.speakerId.speakerImg%>" alt="">
         </div>
         <p><b class="sign2">Speaker name: </b><%=session.speakerId.speakerName%></p>
         <p><b class="sign2">Speaker description: </b><%=session.speakerId.speakerDescription%></p>
@@ -126,28 +126,6 @@
 
 
 
-  <script>
-    const allBtn = document.querySelector('.allSessionsDisplayBtn');
-    const upcommingBtn = document.querySelector('.upcommingSessionsDisplayBtn');
-
-    const allSess = document.querySelector('.allSessionsDisplay');
-    const upcommingSess = document.querySelector('.upcommingSessionsDisplay');
-
-    function allBttns() {
-      console.log(allSess.className);
-      for (let i = 0; i < allSess.lenght; i++) {
-        allSess[i].className += " collapse";
-        upcommingSess[i].className += " collapse";
-      }
-
-    }
-
-    function upcommingBttns() {
-      allSess.classList.toggle(' collapse');
-      upcommingSess.classList.toggle(' collapse');
-    }
-
-  </script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
