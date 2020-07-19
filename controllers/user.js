@@ -6,10 +6,10 @@ const Speaker = require("../models/speaker");
 
 exports.getIndex = (req, res, next) => {
     Conference.find().populate("address").then(conferences => {
-        conferences.sort((a,b) => a.startTime - b.startTime);
+        conferences.sort((a, b) => a.startTime - b.startTime);
         const date = new Date()
         let active = conferences.filter(conf => {
-            if(conf.startTime < date &&  conf.endTime > date) {
+            if (conf.startTime < date && conf.endTime > date) {
                 return conf
             }
         })
@@ -63,12 +63,8 @@ exports.getConferenceDetails = (req, res, next) => {
             Speaker.find().then(speakers => {
 
                 Hall.find().then(halls => {
-    
-                    let pastSessions = sessionSorter(sessions,"pastSessions");
-                    
-                    let activeSessions = sessionSorter(sessions,"activeSessions");
-                    
-                    let upcommingSessions = sessionSorter(sessions,"upcommingSessions");
+
+                    let upcommingSessions = sessionSorter(sessions, "upcommingSessions");
                     res.render("conference-details", {
                         halls: halls || [],
                         speakers: speakers || [],
@@ -77,10 +73,9 @@ exports.getConferenceDetails = (req, res, next) => {
                         path: "/all-conferences",
                         conference: conf,
                         allSessions: sessions || [],
-                        pastSessions: pastSessions,
-                        activeSessions:activeSessions,
-                        upcommingSessions : upcommingSessions
-    
+
+                        upcommingSessions: upcommingSessions
+
                     })
                 })
             })
@@ -88,13 +83,13 @@ exports.getConferenceDetails = (req, res, next) => {
 
     }).catch(err => console.log(err))
 }
-exports.getAllSessions = (req,res,next)=>{
-    ConferenceSession.find().populate("conferenceId").then(conf=>{
-        res.render("all-sessions",{
-            conferences : conf,
-            pageTitle : 'All Sessions',
+exports.getAllSessions = (req, res, next) => {
+    ConferenceSession.find().populate("conferenceId").then(conf => {
+        res.render("all-sessions", {
+            conferences: conf,
+            pageTitle: 'All Sessions',
             path: "/all-sessions",
-            currentDate : req.date,
+            currentDate: req.date,
             isLoggedIn: req.session.isLoggedIn
         })
     });
