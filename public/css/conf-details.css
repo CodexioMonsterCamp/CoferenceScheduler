@@ -98,6 +98,11 @@ a:link {
   border-radius: 50%;
 }
 
+.img2 {
+  width: 100%;
+  border-radius: 1.5em;
+}
+
 .circular--landscape img {
   width: auto;
   height: 100%;
