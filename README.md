@@ -48,100 +48,146 @@ Zadachi:
 5. Когато адна нова сесия успешно не дава месидж за съксес и ме връща в моите конференции(аз бих предпочел да остана при сесиите за да си добавя нови ако искам)
 6. Ако има колизия при създаването на сесия ме редиректва към All-conferences (бих предпочел да остана в сесиите и там да получа месиджа за колизия за да мога директно да го фиксна и да продължа)
 
+conf details css:
+/*/////////nav bar css/////*/
+/* 
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #0082e6;
+  min-height: 8vh;
+  width: 100%;
+  text-align: center;
+}
 
-// exports.postAddConference = (req, res, next) => {
+label.logo {
+  color: #0082e6;
+  font-size: 33px;
+  line-height: 80px;
+  padding: 0 140px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
 
-//     const name = req.body.name
-//     const description = req.body.description
-//     const startTime = req.body.startTime;
-//     const endTime = req.body.endTime;
-//     const address = req.body.address;
-//     const userId = req.user._id;
-//     const newConference = new Conference({
-//         name,
-//         description,
-//         startTime,
-//         endTime,
-//         address,
-//         userId
-//     })
-//     Conference.findOne({name: name}).then(conf => {
-//         if (!conf && (newConference.startTime < newConference.endTime)) {
-//             return newConference.save().then(() => {
-//                 return req.user.addToConfOwner(newConference)
-//             }).then(() => {
-//                 res.redirect("/allconferences");
-//                 console.log("Conference added successful")
-//             }).catch(err => console.log(err))
-//         } else {
-//             console.log("Conference already exist!")
-//             res.redirect("/add-conference");
-//         }
-//     })
+nav ul {
+  margin-right: 60px;
+  display: block;
+}
 
-// }
+nav ul li {
+  display: inline;
+  line-height: 80px;
+  margin: 0 1vh;
+  list-style-type: none;
+}
 
-// exports.postAddNewSession = (req, res, next) => {
-//     const venueId = req.body.venueId
-//     const speakerId = req.body.speaker
-//     const hallId = req.body.hall
-//     const conferenceId = req.body.conferenceId
-//     const startTime = req.body.startTime;
-//     const endTime = req.body.endTime;
-//     const session = new ConferenceSession({
-//         venueId,
-//         speakerId,
-//         hallId,
-//         conferenceId,
-//         startTime,
-//         endTime
-//     });
-//     Conference.findById(conferenceId).populate("userId").then(conf => {
-        
-//         if(conf.userId._id.toString() === req.user._id.toString() && 
-//         (session.startTime < session.endTime)) {
-//                 return session.save().then(() => {
-                    
-//                         res.redirect("/myconferences");
-//                         console.log("ADDED SESSION");
-                    
-//                 })
-        
-//             } 
-//             else {
-//                 console.log("Not your conference or endtime is starttime")
-//                 res.redirect("/")
-//             }
-// })
+nav ul li a {
+  color: #f2f2f2;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1.099px;
+  padding: 2vh;
+  border-radius: 3px;
+  /* text-transform: uppercase; */
+/*
+  font-family: "Poppins", sans-serif;
+}
 
-// }
+a.active,
+a:hover {
+  transition: 0.5s;
+  border-radius: 5em;
+}
 
-        Venue.findById(venueId).then(venue => {
-            let isExisting = async function (venueId, name) {
-                let isExisting = false;
-                let resp = await Hall.find({venueId: venueId}).then(halls => {
-                    return halls
-                });
-                for (let hall of resp) {
-                    if (hall.name === name) {
-                        isExisting = true;
-                    }
-                }
-                return isExisting
-            }
+a.active {
+  background: #1b9bff;
+}
 
-            if (isExisting(venueId, name).then(data => {
-                return data
-            }) === false) {
-                console.log("inside")
-                venue.addHall(hall._id)
-                return hall.save().then(() => {
-                    res.redirect("/");
-                    console.log("Hall added successful!");
-                }).catch(err => console.log(err))
-            } else {
-                console.log("outside")
-                req.flash("error", "This hall already exists.")
-                res.redirect("/add-hall");
-            }
-        })
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+.button-nav {
+  display: none;
+}
+
+.labell {
+  margin: 0 40px 0 0;
+  font-size: 26px;
+  line-height: 70px;
+  display: none;
+  width: 35px;
+  float: right;
+}
+
+#toggle {
+  display: none;
+} */
+
+
+/* ACTIVE PAST UPCOMING BUTTONS STYLE END  /|\  */
+
+/* POP UP NOTIFICATION CONFERNCE DETAILS PAGE \|/  */
+
+/* Popup container - can be anything you want */
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #3a3f45;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #3a3f45ab;
+  width: 80%;
+  border-radius: 1.5em;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgba(255, 255, 255, 0.582);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/////     end of popUp    //////

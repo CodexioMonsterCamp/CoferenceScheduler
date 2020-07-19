@@ -314,28 +314,30 @@ exports.maximumProgramme = (req, res, next) => {
             let durationTwo = b.endTime - b.startTime;
             return durationOne - durationTwo;
         })
-        for (const conferenceSession of conferenceSessions) {
-            if(collisionCheck(conferenceSession,userSessions)){
-                if(conferenceSession.sessionSeats-1>=0) {
-                    console.log(conferenceSession)
-                    userSessions.push(conferenceSession);
-                    userSessions.sort(sortSessions)
-                    req.user.addSession(conferenceSession).then(() => {
-                        conferenceSession.seatTaken().then(() => {
-                            console.log("1")    
-                        });
-                    })
-                    
-                }             
+        async function maximumProgrammeFunc(conferenceSessions, userSessions) {
+           
+            for (let i = 0; i < conferenceSessions.length; i++) {
+                if(collisionCheck(conferenceSessions[i],userSessions)){
+                    if(conferenceSessions[i].sessionSeats-1>=0) {
+                        try {
+                            userSessions.push(conferenceSessions[i]);
+                            userSessions.sort(sortSessions)
+                            await req.user.addSession(conferenceSessions[i])
+                            await conferenceSessions[i].seatTaken()
+                        } catch(err) {
+                            console.log(err)
+                        }
+                    }             
+                }
             }
+            res.redirect("myconferences")
         }
-        // User.findById({_id: req.user._id}).then(user => {
-        //     user.addSessions(possibleSessions[0], possibleSessions[1])
-        // }).then(() => {
-        //     res.redirect("/myconferences")
-        // })
-       res.redirect("/myconferences")
+
+        maximumProgrammeFunc(conferenceSessions, userSessions)
+
+       
     })
+    .catch(err => console.log(err))
 }
 
 exports.getAddSpeaker = (req,res,next) => {
