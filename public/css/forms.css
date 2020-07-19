@@ -636,6 +636,10 @@ a.active {
   border-radius: 50%;
 }
 
+.imgg {
+  margin-bottom: 15px;
+}
+
 .containerSpeaker {
   padding-top: 0px;
 }
